@@ -9,67 +9,80 @@ int main() {
 
     // Implementação de Movimentação do Bispo - Movimentação: 5 casas na diagonal superior direita
     printf("Movimentação Bispo - 5 Casa para diagonal Superior Direita.\n");
-    printf("Posicição Inicial (1,1)\n");
+    printf("Posicição Inicial (Linha: 1, Coluna: 1)\n");
 
     int Casa_Bispo = 1;
 
     while (Casa_Bispo < 6){ // Realiza a movimentação da Peça
 
         Casa_Bispo++;
-        int Casa_atual = Casa_Bispo- 1; // Variavel auxiliar para exibição da casa atual que a peça se encontra
+        int Casa_atual = Casa_Bispo - 1; // Variavel auxiliar para exibição da casa atual que a peça se encontra
 
-        printf("%dª Casa: Cima ↑, Direita →: Posição (%d,%d)\n",Casa_atual,Casa_Bispo,Casa_Bispo);
+        printf("%dª Casa: Cima ↑, Direita →: Posição (Linha: %d, Coluna: %d)\n",Casa_atual,Casa_Bispo,Casa_Bispo);
         
     }
-    printf("Posição Final - Bispo (%d,%d)\n",Casa_Bispo,Casa_Bispo);
+    printf("Posição Final - Bispo (Linha: %d, Coluna: %d)\n",Casa_Bispo,Casa_Bispo);
 
     // Implementação de Movimentação da Torre - Movimentação: 5 casas para a direita
     printf("\nMovimentação Torre - 5 Casas para Direita\n");
-    printf("Posição Inicial (1,1)\n");
+    printf("Posição Inicial (Linha: 1, Coluna:1)\n");
 
     int Casa_Torre = 1;
+    int Coluna_torre = 1;
+    int Mov_Torre = 1;
+
     do // Realiza a movimentação da Peça
     {
         Casa_Torre++;
-        int Casa_Atual = Casa_Torre-1; // Variavel auxiliar para exibição da casa atual que a peça se encontra
+        printf("%dª Casa: Direita →: Posição (Linha:%d , Coluna: %d)\n",Mov_Torre,Coluna_torre,Casa_Torre);
+        Mov_Torre++;
 
-        printf("%dª Casa: Direita →: Posição (%d,%d)\n",Casa_Atual,Casa_Torre,Casa_Torre);
     } while (Casa_Torre < 6);
 
-    printf("Posição Final - Torre (%d,%d).\n",Casa_Torre,Casa_Torre);
+    printf("Posição Final - Torre (Linha: %d, Coluna: %d).\n",Coluna_torre,Casa_Torre);
 
     // Implementação de Movimentação da Rainha - Movimentação: 8 casas para a esquerda
     printf("\nMovimentação Rainha - 8 Casas para Esquerda\n");
-    printf("Posição Inicial (1,1)\n");
+    printf("Posição Inicial (Linha: 1, Coluna: 1)\n");
 
     int aux = 0; // Variavel auxiliar para exibição da Posição final conforme movimentação realizada.
+    int cont_rainha = 1;
 
     for (int Casa_Rainha = 1; Casa_Rainha < 9; Casa_Rainha++){ // Realiza a movimentação da Peça
 
-        aux = Casa_Rainha + 1;
-
-        printf("%dª Casa: Esquerda ←: Posição (%d,%d)\n",Casa_Rainha,aux,aux);
+        aux = Casa_Rainha - 1;
+        
+        if(aux == 0){
+            printf("%dª Casa: Esquerda ←: Posição (Linha: %d, Coluna: %d)\n",Casa_Rainha,cont_rainha,aux);
+        } else {
+            printf("%dª Casa: Esquerda ←: Posição (Linha: %d, Coluna: -%d)\n",Casa_Rainha,cont_rainha,aux);
+        }
+        
     }
 
-    printf("Posição Final - Rainha (%d,%d)\n",aux,aux);
+    printf("Posição Final - Rainha (Linha: %d, Coluna: -%d)\n",cont_rainha,aux);
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
 
     // Implementação Movimentação do Cavalo - 2 Casas Para baixo e 1 para esquerda.
     printf("\nMovimentação Cavalo - 2 Casas baixo e 1 casa para Esquerda\n");
-    printf("Posição Inicial (1,1)\n");
+    printf("Posição Inicial (Linha: 1, Coluna: 1)\n");
 
-    int baixo = 1;
-    int linha;
+    int linha = 1;
+    int Coluna;
+    int Casa_Esquerda;
+    int Cont_Movimento = 1;
     
-    do
-    {
-        baixo++;
-        for (linha = 1; linha < 3; linha++){
-            printf("%dª Movimento - Casa (%d,%d)\n",linha,baixo,linha);
-        }
-        
-        printf("%dª Movimento - Casa (%d,%d)\n",linha,baixo,linha);
-    }while (baixo < 2);
+    for (Coluna = 1; Coluna <= 1 ; Coluna++){
+        do 
+        {
+            linha++;
+            printf("%dª Movimento - Casa (Linha: %d, Coluna: %d)\n",Cont_Movimento,linha,Coluna);
+            Cont_Movimento++;
+        } while (linha < 3);
+        Casa_Esquerda = Coluna -1;
+
+        printf("%dª Movimento - Casa ( Linha: %d, Coluna: %d)\n",Cont_Movimento,linha,Casa_Esquerda);
+    }
     
     // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
     // Um loop pode representar a movimentação horizontal e outro vertical.
