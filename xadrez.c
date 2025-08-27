@@ -13,7 +13,7 @@ int main() {
 
     int Casa_Bispo = 1;
 
-    while (Casa_Bispo < 6){
+    while (Casa_Bispo < 6){ // Realiza a movimentação da Peça
 
         Casa_Bispo++;
         int Casa_atual = Casa_Bispo- 1; // Variavel auxiliar para exibição da casa atual que a peça se encontra
@@ -28,7 +28,7 @@ int main() {
     printf("Posição Inicial (1,1)\n");
 
     int Casa_Torre = 1;
-    do
+    do // Realiza a movimentação da Peça
     {
         Casa_Torre++;
         int Casa_Atual = Casa_Torre-1; // Variavel auxiliar para exibição da casa atual que a peça se encontra
@@ -44,7 +44,7 @@ int main() {
 
     int aux = 0; // Variavel auxiliar para exibição da Posição final conforme movimentação realizada.
 
-    for (int Casa_Rainha = 1; Casa_Rainha < 9; Casa_Rainha++){
+    for (int Casa_Rainha = 1; Casa_Rainha < 9; Casa_Rainha++){ // Realiza a movimentação da Peça
 
         aux = Casa_Rainha + 1;
 
@@ -52,7 +52,6 @@ int main() {
     }
 
     printf("Posição Final - Rainha (%d,%d)\n",aux,aux);
-    //printf("Posição Final - Rainha (%d,%d).\n",Casa_Rainha,Casa_Rainha);
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
 
     // Nível Aventureiro - Movimentação do Cavalo
