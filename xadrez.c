@@ -5,16 +5,54 @@
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
 int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+    printf("Movimentação Peça de Xadrez!"); //
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+    // Implementação de Movimentação do Bispo - Movimentação: 5 casas na diagonal superior direita
+    printf("Movimentação Bispo - 5 Casa para diagonal Superior Direita.\n");
+    printf("Posicição Inicial (1,1)\n");
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
+    int Casa_Bispo = 1;
 
-    // Implementação de Movimentação da Rainha
+    while (Casa_Bispo < 6){
+
+        Casa_Bispo++;
+        int Casa_atual = Casa_Bispo- 1; // Variavel auxiliar para exibição da casa atual que a peça se encontra
+
+        printf("%dª Casa: Cima ↑, Direita →: Posição (%d,%d)\n",Casa_atual,Casa_Bispo,Casa_Bispo);
+        
+    }
+    printf("Posição Final - Bispo (%d,%d)\n",Casa_Bispo,Casa_Bispo);
+
+    // Implementação de Movimentação da Torre - Movimentação: 5 casas para a direita
+    printf("\nMovimentação Torre - 5 Casas para Direita\n");
+    printf("Posição Inicial (1,1)\n");
+
+    int Casa_Torre = 1;
+    do
+    {
+        Casa_Torre++;
+        int Casa_Atual = Casa_Torre-1; // Variavel auxiliar para exibição da casa atual que a peça se encontra
+
+        printf("%dª Casa: Direita →: Posição (%d,%d)\n",Casa_Atual,Casa_Torre,Casa_Torre);
+    } while (Casa_Torre < 6);
+
+    printf("Posição Final - Torre (%d,%d).\n",Casa_Torre,Casa_Torre);
+
+    // Implementação de Movimentação da Rainha - Movimentação: 8 casas para a esquerda
+    printf("\nMovimentação Rainha - 8 Casas para Esquerda\n");
+    printf("Posição Inicial (1,1)\n");
+
+    int aux = 0; // Variavel auxiliar para exibição da Posição final conforme movimentação realizada.
+
+    for (int Casa_Rainha = 1; Casa_Rainha < 9; Casa_Rainha++){
+
+        aux = Casa_Rainha + 1;
+
+        printf("%dª Casa: Esquerda ←: Posição (%d,%d)\n",Casa_Rainha,aux,aux);
+    }
+
+    printf("Posição Final - Rainha (%d,%d)\n",aux,aux);
+    //printf("Posição Final - Rainha (%d,%d).\n",Casa_Rainha,Casa_Rainha);
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
 
     // Nível Aventureiro - Movimentação do Cavalo
