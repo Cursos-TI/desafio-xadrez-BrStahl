@@ -54,7 +54,23 @@ int main() {
     printf("Posição Final - Rainha (%d,%d)\n",aux,aux);
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
 
-    // Nível Aventureiro - Movimentação do Cavalo
+    // Implementação Movimentação do Cavalo - 2 Casas Para baixo e 1 para esquerda.
+    printf("\nMovimentação Cavalo - 2 Casas baixo e 1 casa para Esquerda\n");
+    printf("Posição Inicial (1,1)\n");
+
+    int baixo = 1;
+    int linha;
+    
+    do
+    {
+        baixo++;
+        for (linha = 1; linha < 3; linha++){
+            printf("%dª Movimento - Casa (%d,%d)\n",linha,baixo,linha);
+        }
+        
+        printf("%dª Movimento - Casa (%d,%d)\n",linha,baixo,linha);
+    }while (baixo < 2);
+    
     // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
     // Um loop pode representar a movimentação horizontal e outro vertical.
 
