@@ -4,19 +4,37 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo
 
-void Movimentacao_Bispo(int Coluna,int Linha,int qtd_mov){
-    for (int aux_Coluna = 0; aux_Coluna < 1 && qtd_mov <= 5; aux_Coluna++){
-        Coluna++;
-        for (int aux_linha = 0; aux_linha < 1 && qtd_mov <= 5; aux_linha++){
-            Linha++;
-            printf("%dª Casa: Cima ↑, Direita →: Posição (Linha: %d, Coluna: %d)\n", qtd_mov, Linha, Coluna);
-
-            if (qtd_mov < 5){
-                Movimentacao_Bispo(Coluna,Linha,qtd_mov+1);
-            }
-        }
+void Movimentacao_Bispo(int linha, int coluna, int movimento) {
+    if (movimento > 5) {
+        return; // Caso base - para a recursão
     }
+    
+    // Loop externo - movimento vertical
+    for (int vertical = 0; vertical < 2; vertical++) {
+        if (vertical == 0) {
+            linha++; // Move para cima
+            continue; // Pula para próxima iteração do loop vertical
+        }
+
+        // Loop interno - movimento horizontal
+        for (int horizontal = 0; horizontal < 2; horizontal++) {
+            if (horizontal == 0) {
+                coluna++; // Move para direita
+                continue; // Pula para próxima iteração do loop horizontal
+            }
+            
+            // Só executa quando ambos os movimentos foram feitos
+            printf("%dª Casa: Cima ↑, Direita →: Posição (Linha: %d, Coluna: %d)\n",
+                   movimento, linha, coluna);
+            break; // Sai do loop interno após mostrar posição
+        }
+        break; // Sai do loop externo após completar movimento
+    }
+    
+    // Chamada recursiva para próximo movimento
+    Movimentacao_Bispo(linha, coluna, movimento + 1);
 }
+
 
 int main() {
     printf("Movimentação Peça de Xadrez!\n"); //
@@ -125,8 +143,7 @@ int main() {
         Você deverá modificar o programa em C, que já contém a movimentação da Torre, Bispo, Rainha e Cavalo, realizando as seguintes alterações:
         Recursividade: Substitua os loops simples que controlam os movimentos da Torre, Bispo e Rainha por funções recursivas. Cada função recursiva deverá simular o movimento da respectiva peça, imprimindo a direção correta a cada casa.
         Loops Complexos para o Cavalo: Aprimore a movimentação do Cavalo, utilizando loops aninhados com múltiplas variáveis e/ou condições. Você pode usar continue e break para controlar o fluxo do loop de forma mais precisa. O movimento do Cavalo agora será para cima e para a direita, em "L" (duas casas para cima e uma para a direita).
-        Bispo com Loops Aninhados: O Bispo deve ser implementado com recursividade, e também com loops aninhados, utilizando o loop mais externo para o movimento vertical, e o mais interno para o movimento horizontal.
-        
+                
         Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
         Inclua o uso de continue e break dentro dos loops.
     */
