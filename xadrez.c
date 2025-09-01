@@ -6,6 +6,9 @@
 
 void Movimentacao_Bispo(int linha, int coluna, int movimento) {
     if (movimento > 5) {
+            
+        printf("Posição Final - Bispo (Linha: %d, Coluna: %d)\n",linha,coluna);
+        printf("\n-----------------------------------------------\n");
         return; // Caso base - para a recursão
     }
     
@@ -30,91 +33,83 @@ void Movimentacao_Bispo(int linha, int coluna, int movimento) {
         }
         break; // Sai do loop externo após completar movimento
     }
-    
     // Chamada recursiva para próximo movimento
     Movimentacao_Bispo(linha, coluna, movimento + 1);
 }
 
+void Movimentacao_Torre(int linha,int coluna,int movimento){
+    if(movimento > 5){
+        printf("Posição Final - Torre (Linha: %d, Coluna: %d).\n",coluna,linha);
+        printf("\n-----------------------------------------------\n");
+        return;
+    } else if( linha > 0 && linha < 7){
+        for (int i = 1; i > 0 && i < 6;i++){
+            linha++;
+            printf("%dª Casa: Direita →: Posição (Linha:%d , Coluna: %d)\n",movimento,coluna,linha);
+            break;
+        }
+        Movimentacao_Torre(linha,coluna,movimento+1);
+    } 
+}
 
+void Movimentacao_Rainha(int linha,int coluna,int movimento){
+    if(movimento > 8){
+        printf("Posição Final - Rainha (Linha: %d, Coluna: %d).\n",coluna,linha);
+        printf("\n-----------------------------------------------\n");
+        return;
+    } else if( linha > -8 && linha < 9){
+        for (int i = 1; i > 0 && i < 6;i++){
+            linha--;
+            printf("%dª Casa: Esqueda ←: Posição (Linha:%d , Coluna: %d)\n",movimento,coluna,linha);
+            break;
+        }
+        Movimentacao_Rainha(linha,coluna,movimento+1);
+
+    } 
+}
 int main() {
-    printf("Movimentação Peça de Xadrez!\n"); //
-
-    int Lin_Ini = 1;
-    int Col_Ini = 1;
-    int Num_Mov = 1;
+    printf("Movimentação Peça de Xadrez!\n");
+    
     // Implementação de Movimentação do Bispo - Movimentação: 5 casas na diagonal superior direita
+    int Lin_Ini_Bispo = 1;
+    int Col_Ini_Bispo = 1;
+    int Num_Mov_Bispo = 1;
+    
     printf("\nPeça Bispo");
     printf("\nMovimento - 5 Casa para diagonal Superior Direita.\n");
-    printf("\nPosicição Inicial (Linha: %d, Coluna: %d)\n",Lin_Ini,Col_Ini);
+    printf("\nPosicição Inicial (Linha: %d, Coluna: %d)\n",Lin_Ini_Bispo,Col_Ini_Bispo);
     
-    Movimentacao_Bispo(Lin_Ini,Col_Ini,Num_Mov);
+    Movimentacao_Bispo(Lin_Ini_Bispo,Col_Ini_Bispo,Num_Mov_Bispo);
 
-    /*
-    int Casa_Bispo = 1;
+    // Implementação de Movimentação da Torre - Movimentação: 5 casas para a direita    
+    int Lin_Ini_Torre = 1;
+    int Col_Ini_Torre = 1;
+    int Num_Mov_Torre = 1;
     
-     Realiza a movimentação da Peça
-    while (Casa_Bispo < 6){ 
-
-        Casa_Bispo++;
-        int Casa_atual = Casa_Bispo - 1; // Variavel auxiliar para exibição da casa atual que a peça se encontra
-
-        printf("%dª Casa: Cima ↑, Direita →: Posição (Linha: %d, Coluna: %d)\n",Casa_atual,Casa_Bispo,Casa_Bispo);
-        
-    } */
-    //printf("Posição Final - Bispo (Linha: 6, Coluna: 6)\n");//,Casa_Bispo,Casa_Bispo);
-
-    printf("\n-----------------------------------------------\n");
-    // Implementação de Movimentação da Torre - Movimentação: 5 casas para a direita
     printf("\nPeça Torre.");
     printf("\nMovimento: 5 Casas para Direita\n");
-    printf("\nPosição Inicial (Linha: %d, Coluna: %d)\n",Lin_Ini,Col_Ini);
+    printf("\nPosição Inicial (Linha: %d, Coluna: %d)\n",Lin_Ini_Torre,Col_Ini_Torre);
 
-    int Casa_Torre = 1;
-    int Coluna_torre = 1;
-    int Mov_Torre = 1;
-    
-    do // Realiza a movimentação da Peça
-    {
-        Casa_Torre++;
-        printf("%dª Casa: Direita →: Posição (Linha:%d , Coluna: %d)\n",Mov_Torre,Coluna_torre,Casa_Torre);
-        Mov_Torre++;
-
-    } while (Casa_Torre < 6);
-
-    printf("Posição Final - Torre (Linha: %d, Coluna: %d).\n",Coluna_torre,Casa_Torre);
-
-    printf("\n-----------------------------------------------\n");
+    Movimentacao_Torre(Lin_Ini_Torre,Col_Ini_Torre,Num_Mov_Torre);
 
     // Implementação de Movimentação da Rainha - Movimentação: 8 casas para a esquerda
+    int Lin_Ini_Rainha = 1;
+    int Col_Ini_Rainha = 1;
+    int Num_Mov_Rainha = 1;
     printf("\nPeça Rainha.");
     printf("\nMovimento: 8 Casas para Esquerda\n");
-    printf("\nPosição Inicial (Linha: %d, Coluna: %d)\n",Lin_Ini,Col_Ini);
+    printf("\nPosição Inicial (Linha: %d, Coluna: %d)\n",Lin_Ini_Rainha,Col_Ini_Rainha);
 
-    int aux = 0; // Variavel auxiliar para exibição da Posição final conforme movimentação realizada.
-    int cont_rainha = 1;
-
-    // Realiza a movimentação da Peça
-    for (int Casa_Rainha = 1; Casa_Rainha < 9; Casa_Rainha++){ 
-
-        aux = Casa_Rainha - 1;
-        
-        if(aux == 0){
-            printf("%dª Casa: Esquerda ←: Posição (Linha: %d, Coluna: %d)\n",Casa_Rainha,cont_rainha,aux);
-        } else {
-            printf("%dª Casa: Esquerda ←: Posição (Linha: %d, Coluna: -%d)\n",Casa_Rainha,cont_rainha,aux);
-        }
-        
-    }
-
-    printf("Posição Final - Rainha (Linha: %d, Coluna: -%d)\n",cont_rainha,aux);
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-    printf("\n-----------------------------------------------\n");
+    Movimentacao_Rainha(Lin_Ini_Rainha,Col_Ini_Rainha,Num_Mov_Rainha);
 
     // Implementação Movimentação do Cavalo - 2 Casas Para baixo e 1 para esquerda.
+    int Lin_Ini_Cavalo = 1;
+    int Col_Ini_Cavalo = 1;
+    int Num_Mov_Cavalo = 1;
+
     printf("\nPeça Cavalo.\n"); 
     printf("Movimento: 2 Casas baixo e 1 casa para Esquerda\n");
-    printf("\nPosição Inicial (Linha: %d, Coluna: %d)\n",Lin_Ini,Col_Ini);
+    printf("\nPosição Inicial (Linha: %d, Coluna: %d)\n",Lin_Ini_Cavalo,Col_Ini_Cavalo);
 
     int linha = 1;
     int Coluna;
