@@ -4,6 +4,7 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo
 
+//Funçao Movimentação Bispo
 void Movimentacao_Bispo(int linha, int coluna, int movimento) {
     if (movimento > 5) {
             
@@ -37,6 +38,7 @@ void Movimentacao_Bispo(int linha, int coluna, int movimento) {
     Movimentacao_Bispo(linha, coluna, movimento + 1);
 }
 
+// Função Movimentação Torre
 void Movimentacao_Torre(int linha,int coluna,int movimento){
     if(movimento > 5){
         printf("Posição Final - Torre (Linha: %d, Coluna: %d).\n",coluna,linha);
@@ -52,6 +54,7 @@ void Movimentacao_Torre(int linha,int coluna,int movimento){
     } 
 }
 
+// Função Movimentação Rainha
 void Movimentacao_Rainha(int linha,int coluna,int movimento){
     if(movimento > 8){
         printf("Posição Final - Rainha (Linha: %d, Coluna: %d).\n",coluna,linha);
@@ -64,12 +67,12 @@ void Movimentacao_Rainha(int linha,int coluna,int movimento){
             break;
         }
         Movimentacao_Rainha(linha,coluna,movimento+1);
-
     } 
 }
+
 int main() {
     printf("Movimentação Peça de Xadrez!\n");
-    
+
     // Implementação de Movimentação do Bispo - Movimentação: 5 casas na diagonal superior direita
     int Lin_Ini_Bispo = 1;
     int Col_Ini_Bispo = 1;
