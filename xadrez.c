@@ -41,13 +41,15 @@ void Movimentacao_Bispo(int linha, int coluna, int movimento) {
 // Função Movimentação Torre
 void Movimentacao_Torre(int linha,int coluna,int movimento){
     if(movimento > 5){
-        printf("Posição Final - Torre (Linha: %d, Coluna: %d).\n",coluna,linha);
+        printf("Posição Final - Torre (Linha: %d, Coluna: %d).\n",linha,coluna);
         printf("\n-----------------------------------------------\n");
         return;
-    } else if( linha > 0 && linha < 7){
+
+    } else if( coluna > 0 && coluna < 7){
+
         for (int i = 1; i > 0 && i < 6;i++){
-            linha++;
-            printf("%dª Casa: Direita →: Posição (Linha:%d , Coluna: %d)\n",movimento,coluna,linha);
+            coluna++;
+            printf("%dª Casa: Direita →: Posição (Linha:%d , Coluna: %d)\n",movimento,linha,coluna);
             break;
         }
         Movimentacao_Torre(linha,coluna,movimento+1);
@@ -57,17 +59,35 @@ void Movimentacao_Torre(int linha,int coluna,int movimento){
 // Função Movimentação Rainha
 void Movimentacao_Rainha(int linha,int coluna,int movimento){
     if(movimento > 8){
-        printf("Posição Final - Rainha (Linha: %d, Coluna: %d).\n",coluna,linha);
+        printf("Posição Final - Rainha (Linha: %d, Coluna: %d).\n",linha,coluna);
         printf("\n-----------------------------------------------\n");
         return;
-    } else if( linha > -8 && linha < 9){
+
+    } else if( coluna > -8 && coluna < 9){
         for (int i = 1; i > 0 && i < 6;i++){
-            linha--;
-            printf("%dª Casa: Esqueda ←: Posição (Linha:%d , Coluna: %d)\n",movimento,coluna,linha);
+            coluna--;
+            printf("%dª Casa: Esqueda ←: Posição (Linha:%d , Coluna: %d)\n",movimento,linha,coluna);
             break;
         }
         Movimentacao_Rainha(linha,coluna,movimento+1);
     } 
+}
+
+// Função Movimentação Cavalo
+void Movimentacao_Cavalo(int linha, int coluna, int movimento){
+    if (movimento > 2){
+        coluna++;
+        printf("%dª Movimento - Direita → ( Coluna: %d, Linha: %d)\n",movimento,coluna,linha);
+        return;
+
+    } else if (linha >-3){
+        for (int i = 1; i > 0 && movimento < 3; i++){
+            linha--;
+            printf("%dª Movimento - Cima ↑ (Coluna: %d, Linha: %d)\n",movimento,coluna,linha);
+            break;
+        }
+        Movimentacao_Cavalo(linha,coluna,movimento+1);
+    }
 }
 
 int main() {
@@ -111,39 +131,10 @@ int main() {
     int Num_Mov_Cavalo = 1;
 
     printf("\nPeça Cavalo.\n"); 
-    printf("Movimento: 2 Casas baixo e 1 casa para Esquerda\n");
+    printf("Movimento: 2 Casas Cima e 1 casa para Direita\n");
     printf("\nPosição Inicial (Linha: %d, Coluna: %d)\n",Lin_Ini_Cavalo,Col_Ini_Cavalo);
 
-    int linha = 1;
-    int Coluna;
-    int Casa_Esquerda;
-    int Cont_Movimento = 1;
-    
-    // Loop que verifica a coluna do Cavalo
-    for (Coluna = 1; Coluna <= 1 ; Coluna++){
-        do // Loop que verifica a linha da peça 
-        {
-            linha++;
-            printf("%dª Movimento - Baixo ↓ (Linha: %d, Coluna: %d)\n",Cont_Movimento,linha,Coluna);
-            Cont_Movimento++;
-        } while (linha < 3);
-        Casa_Esquerda = Coluna -1;
+    Movimentacao_Cavalo(Lin_Ini_Cavalo,Col_Ini_Cavalo,Num_Mov_Cavalo);
 
-        printf("%dª Movimento - Esquerda ← ( Linha: %d, Coluna: %d)\n",Cont_Movimento,linha,Casa_Esquerda);
-    }
-    
-    /* Explicação Nivel Mestre e O que deve ser feito
-        Nível Mestre - Funções Recursivas e Loops Aninhados
-        Sugestão: Substitua as movimentações das peças por funções recursivas.
-        Exemplo: Crie uma função recursiva para o movimento do Bispo.
-        O que você vai fazer
-
-        Você deverá modificar o programa em C, que já contém a movimentação da Torre, Bispo, Rainha e Cavalo, realizando as seguintes alterações:
-        Recursividade: Substitua os loops simples que controlam os movimentos da Torre, Bispo e Rainha por funções recursivas. Cada função recursiva deverá simular o movimento da respectiva peça, imprimindo a direção correta a cada casa.
-        Loops Complexos para o Cavalo: Aprimore a movimentação do Cavalo, utilizando loops aninhados com múltiplas variáveis e/ou condições. Você pode usar continue e break para controlar o fluxo do loop de forma mais precisa. O movimento do Cavalo agora será para cima e para a direita, em "L" (duas casas para cima e uma para a direita).
-                
-        Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-        Inclua o uso de continue e break dentro dos loops.
-    */
     return 0;
 }
